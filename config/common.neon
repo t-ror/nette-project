@@ -5,13 +5,13 @@ application:
 	errorPresenter:
 		4xx: Error:Error4xx
 		5xx: Error:Error5xx
-	mapping: App\UI\*\**Presenter
+	mapping: App\UI\Presenter\*\**Presenter
 
 
 database:
-	dsn: 'sqlite::memory:'
-	user:
-	password:
+	dsn: 'pgsql:host=db;port=5432;dbname=app'
+	user: 'root'
+	password: 'root'
 
 
 latte:
