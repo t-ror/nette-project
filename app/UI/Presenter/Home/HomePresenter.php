@@ -2,9 +2,9 @@
 
 namespace App\UI\Presenter\Home;
 
-use Nette;
+use Nette\Application\UI\Presenter;
 
-final class HomePresenter extends Nette\Application\UI\Presenter
+final class HomePresenter extends Presenter
 {
 
 }

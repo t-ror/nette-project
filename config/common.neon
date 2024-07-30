@@ -1,5 +1,9 @@
 parameters:
-
+	doctrine:
+		host: db
+		user: root
+		password: root
+		dbname: app
 
 application:
 	errorPresenter:
@@ -25,3 +29,9 @@ di:
 	export:
 		parameters: no
 		tags: no
+
+extensions:
+	console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+
+includes:
+	- doctrine.neon
