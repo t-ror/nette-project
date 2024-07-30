@@ -11,11 +11,11 @@ extensions:
 
 doctrine.orm.attributes:
 	mapping:
-		App\Model: %appDir%/Model
+		App\Model: %appDir%/Model/Entity
 
 doctrine.orm.annotations:
 	mapping:
-		App\Model: %appDir%/Model
+		App\Model: %appDir%/Model/Entity
 
 doctrine.dbal:
 	debug:
