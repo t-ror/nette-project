@@ -1,3 +1,19 @@
+## Install app
+.PHONY: install
+install:
+	@if [ -f /.dockerenv ] || [ "$(RAW)" = "1" ] ; then \
+		echo 'You cant install app in docker container'; \
+	else \
+		mkdir log; \
+		mkdir temp; \
+		sudo chmod 777 log/ -R; \
+		sudo chmod 777 temp/ -R; \
+		make up; \
+		docker-compose -f docker-compose.yml exec app composer install; \
+		make down; \
+		echo 'Installation complete. You can use command "make up" to start the app.'; \
+	fi; \
+
 ## Clear cache
 .PHONY: rmcache
 rmcache:

@@ -5,6 +5,17 @@ Base for Nette projects.
 - Nette 3.2
 - PostgresSQL 16.3
 
+## Installation
+Clone repository using git
+```bash
+git clone https://github.com/t-ror/nette-project.git
+```
+
+Use install command
+```bash
+make install
+```
+
 ## Commands
 Start docker container
 ```bash
