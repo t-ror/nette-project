@@ -4,14 +4,12 @@ install:
 	@if [ -f /.dockerenv ] || [ "$(RAW)" = "1" ] ; then \
 		echo 'You cant install app in docker container'; \
 	else \
-		mkdir log; \
-		mkdir temp; \
-		sudo chmod 777 log/ -R; \
-		sudo chmod 777 temp/ -R; \
+		mkdir -p log; \
+		mkdir -p temp/cache; \
 		make up; \
 		docker-compose -f docker-compose.yml exec app composer install; \
-		make down; \
-		echo 'Installation complete. You can use command "make up" to start the app.'; \
+		docker-compose -f docker-compose.yml exec app chown -R www-data:www-data temp log; \
+		echo 'Installation complete. The app is running.'; \
 	fi; \
 
 ## Clear cache
@@ -64,7 +62,7 @@ db-diff:
 	@if [ -f /.dockerenv ] || [ "$(RAW)" = "1" ] ; then \
 		bin/console orm:schema-tool:update --dump-sql > diff.sq --complete; \
 	else \
-		docker-compose -f docker-compose.yml exec sanasport bin/console orm:schema-tool:update --dump-sql > diff.sql --complete; \
+		docker-compose -f docker-compose.yml exec app bin/console orm:schema-tool:update --dump-sql > diff.sql --complete; \
 	fi; \
 
 ## CI Stack
